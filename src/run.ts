@@ -95,7 +95,6 @@ export async function run() {
       throw new Error("No Lcov path specified.");
     }
 
-    console.log(`Using lcov file: ${pathToLcov}`);
 
     let file;
 
@@ -108,6 +107,7 @@ export async function run() {
 
     const basePath = core.getInput('base-path');
     const fileFormat = core.getInput('file-format');
+    console.log(`Using file: ${pathToLcov} with format ${fileFormat}`);
     const adjustedFile = basePath && fileFormat == 'lcov'  ? adjustLcovBasePath(file, basePath) : file;
 
     coveralls.handleInput({file: adjustedFile, format: fileFormat}, (err: string, body: string) => {

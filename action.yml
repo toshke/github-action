@@ -31,6 +31,10 @@ inputs:
   git-commit:
     description: 'Override the commit sha'
     required: false
+  file-format:
+    description: "'coveralls' or 'lcov'. LCOV is converted to Coveralls JSON on the fly"
+    required: true
+    default: 'lcov'
 outputs:
   coveralls-api-result:
     description: 'Result status of Coveralls API post.'

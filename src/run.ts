@@ -107,9 +107,10 @@ export async function run() {
 
 
     const basePath = core.getInput('base-path');
+    const fileFormat = core.getInput('base-path');
     const adjustedFile = basePath ? adjustLcovBasePath(file, basePath) : file;
 
-    coveralls.handleInput(adjustedFile, (err: string, body: string) => {
+    coveralls.handleInput({path: adjustedFile, format: fileFormat}, (err: string, body: string) => {
       if(err){
         core.setFailed(err);
       } else {
